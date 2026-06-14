@@ -27,17 +27,11 @@ body {
   height:100%; overflow:hidden;
   display:flex; flex-direction:column;
 }
-
-/* ── SCREENS ── */
 .screen { display:none; flex-direction:column; height:100%; width:100%; }
 .screen.active { display:flex; }
 
 /* ══ HOME ══ */
-#home {
-  align-items:center;
-  overflow-y:auto;
-  padding: calc(48px + var(--st)) 20px calc(32px + var(--sb));
-}
+#home { align-items:center; overflow-y:auto; padding: calc(48px + var(--st)) 20px calc(32px + var(--sb)); }
 .brand { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--ac2); font-weight:500; margin-bottom:6px; }
 .home-title {
   font-size:28px; font-weight:800; letter-spacing:-.5px;
@@ -55,27 +49,37 @@ body {
 }
 .pcard:active { transform:scale(.97); }
 .pcard:hover { border-color:var(--ac); box-shadow:0 8px 24px rgba(124,92,252,.18); }
-.pcard-av {
-  width:60px; height:60px; border-radius:50%; background:var(--sf2);
-  overflow:hidden; border:2px solid var(--bd);
-  display:flex; align-items:center; justify-content:center; font-size:24px;
-}
+.pcard-av { width:60px; height:60px; border-radius:50%; background:var(--sf2); overflow:hidden; border:2px solid var(--bd); display:flex; align-items:center; justify-content:center; font-size:24px; }
 .pcard-av img { width:100%; height:100%; object-fit:cover; }
 .pcard-name { font-size:13px; font-weight:700; text-align:center; width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .pcard-meta { font-size:10px; color:var(--dm); text-align:center; }
 .pcard-saved { font-size:9px; background:rgba(124,92,252,.18); color:var(--ac2); padding:2px 7px; border-radius:20px; display:inline-block; margin-top:2px; }
+.pcard-photo { font-size:9px; padding:2px 7px; border-radius:20px; display:inline-block; margin-top:1px; }
+.pcard-photo.linked { background:rgba(110,240,138,.12); color:#6ef08a; }
+.pcard-photo.unlinked { background:rgba(136,130,170,.1); color:var(--dm); }
 .pcard-del { position:absolute; top:7px; right:9px; background:none; border:none; color:var(--dm); font-size:13px; cursor:pointer; padding:4px 5px; border-radius:6px; }
 .pcard-del:active { color:#ff6b6b; }
+
+.home-btns { display:flex; flex-direction:column; gap:10px; width:100%; max-width:480px; }
 .add-btn {
-  width:100%; max-width:480px; padding:15px;
+  width:100%; padding:15px;
   background:var(--sf); border:1.5px dashed var(--bd); border-radius:18px;
   color:var(--dm); font-size:14px; font-weight:600; cursor:pointer;
   display:flex; align-items:center; justify-content:center; gap:8px;
   transition:border-color .15s, color .15s;
 }
 .add-btn:active { border-color:var(--ac); color:var(--ac2); }
+.folder-btn {
+  width:100%; padding:13px;
+  background:rgba(124,92,252,.08); border:1px solid rgba(124,92,252,.2); border-radius:16px;
+  color:var(--ac2); font-size:13px; font-weight:600; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  transition:border-color .15s, background .15s;
+}
+.folder-btn:active { background:rgba(124,92,252,.18); border-color:var(--ac); }
+
 #install-bar {
-  display:none; width:100%; max-width:480px; margin-top:14px;
+  display:none; width:100%; max-width:480px; margin-top:4px;
   background:rgba(124,92,252,.1); border:1px solid rgba(124,92,252,.25);
   border-radius:16px; padding:12px 16px; cursor:pointer;
   align-items:center; gap:10px;
@@ -85,11 +89,7 @@ body {
 .ib-sub { font-size:10px; color:var(--dm); margin-top:1px; }
 
 /* ══ MODALS ══ */
-.modal-bg {
-  display:none; position:fixed; inset:0;
-  background:rgba(0,0,0,.65); backdrop-filter:blur(8px);
-  z-index:100; align-items:flex-end; justify-content:center;
-}
+.modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.65); backdrop-filter:blur(8px); z-index:100; align-items:flex-end; justify-content:center; }
 .modal-bg.open { display:flex; }
 .msheet {
   background:var(--sf); border-radius:24px 24px 0 0;
@@ -102,11 +102,7 @@ body {
 .mhandle { width:36px; height:4px; background:var(--bd); border-radius:2px; margin:-10px auto 6px; }
 .mtitle { font-size:17px; font-weight:800; }
 .msub-txt { font-size:11px; color:var(--dm); margin-top:-4px; }
-.urow {
-  background:var(--sf2); border:1px solid var(--bd); border-radius:13px;
-  padding:13px 15px; display:flex; align-items:center; gap:11px; cursor:pointer;
-  transition:border-color .15s;
-}
+.urow { background:var(--sf2); border:1px solid var(--bd); border-radius:13px; padding:13px 15px; display:flex; align-items:center; gap:11px; cursor:pointer; transition:border-color .15s; }
 .urow:active { border-color:var(--ac); }
 .uicon { width:36px; height:36px; border-radius:10px; background:rgba(124,92,252,.15); display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
 .uinfo { flex:1; min-width:0; }
@@ -117,7 +113,6 @@ body {
 .mbtn.pri { background:var(--ac); }
 .mbtn.sec { background:var(--sf2); color:var(--dm); margin-top:-4px; }
 
-/* folder match status */
 .match-box { background:var(--sf2); border:1px solid var(--bd); border-radius:13px; padding:13px 15px; }
 .match-title { font-size:12px; font-weight:700; color:var(--dm); margin-bottom:8px; }
 .match-row { display:flex; align-items:center; gap:8px; padding:5px 0; font-size:12px; }
@@ -146,51 +141,28 @@ body {
 .vbtn { background:var(--sf2); border:1px solid var(--bd); border-radius:9px; padding:6px 9px; font-size:11px; color:var(--dm); cursor:pointer; white-space:nowrap; }
 .vbtn:active { border-color:var(--ac); color:var(--ac2); }
 
-/* messages */
 .msgs { flex:1; overflow-y:auto; padding:14px 12px calc(14px + var(--sb)); display:flex; flex-direction:column; scrollbar-width:thin; scrollbar-color:var(--bd) transparent; }
 .dsep { text-align:center; font-size:11px; color:var(--dm); margin:16px 0 8px; display:flex; align-items:center; gap:8px; flex-shrink:0; }
 .dsep::before, .dsep::after { content:''; flex:1; height:1px; background:var(--bd); }
 
-/* message row: them = left, me = right */
 .mrow { display:flex; align-items:flex-end; gap:6px; margin-bottom:2px; }
 .mrow.me { flex-direction:row-reverse; }
 .mrow.them { flex-direction:row; }
-
 .mav { width:32px; height:32px; border-radius:50%; background:var(--sf2); overflow:hidden; flex-shrink:0; border:1.5px solid var(--bd); display:flex; align-items:center; justify-content:center; font-size:13px; }
 .mav img { width:100%; height:100%; object-fit:cover; }
 .maph { width:32px; flex-shrink:0; }
-
 .mcont { max-width:70%; display:flex; flex-direction:column; }
 .mrow.me .mcont { align-items:flex-end; }
 .mrow.them .mcont { align-items:flex-start; }
-
 .mname { font-size:10px; color:var(--dm); margin-bottom:2px; padding-left:2px; }
-
-/* THEM bubble: left side, white-ish */
-.mrow.them .bubble {
-  background:var(--sf2); border:1px solid var(--bd);
-  border-radius:4px 16px 16px 16px;
-  color:var(--tx);
-}
-/* ME bubble: right side, purple gradient */
-.mrow.me .bubble {
-  background:var(--me);
-  border-radius:16px 4px 16px 16px;
-  color:#fff;
-}
+.mrow.them .bubble { background:var(--sf2); border:1px solid var(--bd); border-radius:4px 16px 16px 16px; color:var(--tx); }
+.mrow.me .bubble { background:var(--me); border-radius:16px 4px 16px 16px; color:#fff; }
 .bubble { padding:8px 12px; font-size:14px; line-height:1.55; word-break:break-all; white-space:pre-wrap; max-width:100%; }
-
 .mtime { font-size:10px; color:var(--dm); margin:2px 3px 0; align-self:flex-end; }
-
 .bimg { max-width:190px; max-height:190px; border-radius:12px; object-fit:cover; cursor:pointer; display:block; border:1px solid var(--bd); }
 .iph { background:var(--sf2); border:1px solid var(--bd); border-radius:12px; padding:9px 13px; font-size:12px; color:var(--dm); }
 
-/* media banner */
-.media-banner {
-  margin:6px 12px 0; background:rgba(124,92,252,.1); border:1px solid rgba(124,92,252,.25);
-  border-radius:12px; padding:10px 14px; display:flex; align-items:center; gap:9px;
-  cursor:pointer; flex-shrink:0;
-}
+.media-banner { margin:6px 12px 0; background:rgba(124,92,252,.1); border:1px solid rgba(124,92,252,.25); border-radius:12px; padding:10px 14px; display:flex; align-items:center; gap:9px; cursor:pointer; flex-shrink:0; }
 .mb-txt { font-size:12px; color:var(--ac2); flex:1; }
 
 /* ══ CALENDAR ══ */
@@ -220,8 +192,6 @@ body {
 @keyframes rot { to { transform:rotate(360deg) } }
 .ltxt { font-size:13px; color:var(--tx); }
 .lsub { font-size:11px; color:var(--dm); }
-
-/* scrollbar */
 ::-webkit-scrollbar { width:4px; }
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:var(--bd); border-radius:2px; }
@@ -233,9 +203,12 @@ body {
 <div class="screen" id="home">
   <div class="brand">Private Archive</div>
   <div class="home-title">My Universe ✦</div>
-  <div class="home-hint">CSV는 영구저장 · 사진은 열 때마다 폴더 선택</div>
+  <div class="home-hint">CSV는 영구저장 · 사진은 열 때마다 Blob URL 연결</div>
   <div class="pgrid" id="pgrid"></div>
-  <button class="add-btn" id="addbtn" onclick="openSetup()">＋ &nbsp;새 대화 추가</button>
+  <div class="home-btns">
+    <button class="add-btn" id="addbtn" onclick="openSetup()">＋ &nbsp;새 대화 추가</button>
+    <button class="folder-btn" id="folder-match-btn" style="display:none" onclick="document.getElementById('mfolders').click()">📂 &nbsp;사진 폴더 자동 매칭 (5개 한번에)</button>
+  </div>
   <div id="install-bar" onclick="installPWA()">
     <span style="font-size:22px">📲</span>
     <div class="ib-txt">
@@ -265,7 +238,11 @@ body {
   </div>
   <div class="msgs" id="msgs"></div>
 </div>
+
+<!-- 뷰어용 폴더 선택 (단일 대화용) -->
 <input type="file" id="mi2" multiple webkitdirectory directory style="display:none" onchange="onMediaViewer(this)">
+<!-- 홈용 멀티 폴더 선택 (최대 5개 폴더 파일 한번에) -->
+<input type="file" id="mfolders" multiple webkitdirectory directory style="display:none" onchange="onFolders(this)">
 
 <!-- ══ SETUP MODAL ══ -->
 <div class="modal-bg" id="setup-modal">
@@ -273,23 +250,20 @@ body {
     <div class="mhandle"></div>
     <div class="mtitle">새 대화 추가</div>
     <div class="msub-txt">CSV는 영구저장 · 사진은 열 때마다 폴더 선택</div>
-
     <div class="urow" onclick="document.getElementById('ci').click()">
       <div class="uicon">📋</div>
       <div class="uinfo"><div class="ulb">메시지 CSV 불러오기</div><div class="usb" id="csub">파일을 선택해주세요</div></div>
     </div>
-
     <div class="urow" onclick="document.getElementById('pi').click()">
       <div class="uicon">👤</div>
       <div class="uinfo"><div class="ulb">프로필 사진 (선택)</div><div class="usb" id="psub">선택 안 됨</div></div>
     </div>
-
     <button class="mbtn pri" onclick="saveProfile()">저장하고 보러가기 →</button>
     <button class="mbtn sec" onclick="closeSetup()">취소</button>
   </div>
 </div>
 
-<!-- ══ MEDIA MATCH MODAL ══ -->
+<!-- ══ MATCH MODAL ══ -->
 <div class="modal-bg" id="match-modal">
   <div class="msheet">
     <div class="mhandle"></div>
@@ -299,16 +273,13 @@ body {
       <div class="match-title">매칭 결과</div>
       <div id="match-rows"></div>
     </div>
-    <button class="mbtn pri" onclick="applyMatch()">이 대로 적용하기</button>
+    <button class="mbtn pri" onclick="applyMatch()">이대로 적용하기</button>
     <button class="mbtn sec" onclick="closeMatch()">취소</button>
   </div>
 </div>
 
-<!-- hidden inputs -->
 <input type="file" id="ci" accept=".csv" style="display:none" onchange="onCSV(this)">
 <input type="file" id="pi" accept="image/*" style="display:none" onchange="onProfile(this)">
-<!-- multi-folder select for home screen (5 folders) -->
-<input type="file" id="mfolders" multiple webkitdirectory directory style="display:none" onchange="onFolders(this)">
 
 <!-- ══ CALENDAR ══ -->
 <div id="cal-bg">
@@ -329,10 +300,7 @@ body {
   </div>
 </div>
 
-<!-- ══ LIGHTBOX ══ -->
 <div id="lb" onclick="this.classList.remove('open')"><img id="lbimg" src="" alt=""></div>
-
-<!-- ══ LOADING ══ -->
 <div id="loading">
   <div class="spin"></div>
   <div class="ltxt" id="ltxt">로딩 중...</div>
@@ -342,7 +310,7 @@ body {
 <script>
 // ══════════════════════════════════════
 //  IndexedDB — CSV + profData 영구저장
-//  사진은 Blob URL로만 (세션 내)
+//  사진은 Blob URL (세션 내) + _media 캐시
 // ══════════════════════════════════════
 const DB = { name:'MyUniverse2', ver:1, store:'profiles' };
 let db = null;
@@ -350,44 +318,38 @@ let db = null;
 function openDB() {
   return new Promise((ok, fail) => {
     const r = indexedDB.open(DB.name, DB.ver);
-    r.onupgradeneeded = e => {
-      e.target.result.createObjectStore(DB.store, { keyPath:'id', autoIncrement:true });
-    };
+    r.onupgradeneeded = e => e.target.result.createObjectStore(DB.store, { keyPath:'id', autoIncrement:true });
     r.onsuccess = e => { db = e.target.result; ok(); };
     r.onerror   = e => fail(e.target.error);
   });
 }
-const tx  = (mode='readonly') => db.transaction(DB.store, mode).objectStore(DB.store);
-const dbGetAll = () => new Promise((ok,f)=>{ const r=tx().getAll(); r.onsuccess=e=>ok(e.target.result); r.onerror=e=>f(e); });
-const dbPut    = obj => new Promise((ok,f)=>{ const r=tx('readwrite').put(obj); r.onsuccess=e=>ok(e.target.result); r.onerror=e=>f(e); });
+const tx       = (mode='readonly') => db.transaction(DB.store, mode).objectStore(DB.store);
+const dbGetAll = () => new Promise((ok,f)=>{ const r=tx().getAll(); r.onsuccess=e=>ok(e.target.result); r.onerror=f; });
+const dbPut    = obj => new Promise((ok,f)=>{ const r=tx('readwrite').put(obj); r.onsuccess=e=>ok(e.target.result); r.onerror=f; });
 const dbDel    = id  => new Promise((ok,f)=>{ const r=tx('readwrite').delete(id); r.onsuccess=ok; r.onerror=f; });
 
 // ══════════════════════════════════════
 //  STATE
 // ══════════════════════════════════════
-let profiles     = [];
-let draft        = { csv:null, profData:null };
-let activeIdx    = -1;
-let parsedMsgs   = [];
-let msgDates     = new Set();
+let profiles          = [];
+let draft             = { csv:null, profData:null };
+let activeIdx         = -1;
+let parsedMsgs        = [];
+let msgDates          = new Set();
 let calY=2021, calM=0;
-let activeMedia  = {};  // filename → objectURL (session only)
-let pendingMatchResult = null; // { profileIdx, mediaMap }
-let deferredInstall = null;
+let activeMedia       = {};   // filename → objectURL (세션)
+let pendingMatchResult = null;
+let deferredInstall   = null;
 
 // ══════════════════════════════════════
-//  SCREEN ROUTING
+//  SCREEN
 // ══════════════════════════════════════
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-
-// Android back button / browser back
-window.addEventListener('popstate', e => {
-  const viewerActive = document.getElementById('viewer').classList.contains('active');
-  if (viewerActive) { goHome(); }
-  // always push state again so we can catch next back
+window.addEventListener('popstate', () => {
+  if (document.getElementById('viewer').classList.contains('active')) goHome();
   history.pushState(null, '', location.href);
 });
 
@@ -401,7 +363,7 @@ window.addEventListener('beforeinstallprompt', e => {
 function installPWA() {
   if (!deferredInstall) return;
   deferredInstall.prompt();
-  deferredInstall.userChoice.then(() => { deferredInstall = null; document.getElementById('install-bar').style.display='none'; });
+  deferredInstall.userChoice.then(() => { deferredInstall=null; document.getElementById('install-bar').style.display='none'; });
 }
 
 // ══════════════════════════════════════
@@ -415,31 +377,27 @@ function renderHome() {
     card.className = 'pcard';
     card.onclick = () => openViewer(i);
 
-    const av = document.createElement('div');
-    av.className = 'pcard-av';
+    const av = document.createElement('div'); av.className='pcard-av';
     av.innerHTML = p.profData ? `<img src="${p.profData}">` : '💜';
 
-    const nm = document.createElement('div');
-    nm.className = 'pcard-name';
-    nm.textContent = p.name || '이름 없음';
+    const nm = document.createElement('div'); nm.className='pcard-name'; nm.textContent = p.name||'이름 없음';
+    const mt = document.createElement('div'); mt.className='pcard-meta'; mt.textContent = (p.msgCount||0).toLocaleString()+'개 메시지';
+    const sv = document.createElement('div'); sv.className='pcard-saved'; sv.textContent = '✓ 저장됨';
 
-    const mt = document.createElement('div');
-    mt.className = 'pcard-meta';
-    mt.textContent = (p.msgCount||0).toLocaleString() + '개 메시지';
+    const ph = document.createElement('div');
+    const hasMedia = p._media && Object.keys(p._media).length > 0;
+    ph.className = 'pcard-photo ' + (hasMedia ? 'linked' : 'unlinked');
+    ph.textContent = hasMedia ? '🖼 사진 연결됨' : '🖼 사진 미연결';
 
-    const sv = document.createElement('div');
-    sv.className = 'pcard-saved';
-    sv.textContent = '✓ 저장됨';
-
-    const del = document.createElement('button');
-    del.className = 'pcard-del';
-    del.textContent = '✕';
+    const del = document.createElement('button'); del.className='pcard-del'; del.textContent='✕';
     del.onclick = e => { e.stopPropagation(); delProfile(i); };
 
-    card.append(av, nm, mt, sv, del);
+    card.append(av, nm, mt, sv, ph, del);
     grid.appendChild(card);
   });
+
   document.getElementById('addbtn').style.display = profiles.length >= 4 ? 'none' : 'flex';
+  document.getElementById('folder-match-btn').style.display = profiles.length > 0 ? 'flex' : 'none';
 }
 
 async function delProfile(i) {
@@ -489,7 +447,7 @@ function onProfile(inp) {
 
 async function saveProfile() {
   if (!draft.csv) { alert('CSV 파일을 먼저 선택해주세요!'); return; }
-  showLoad('저장 중...', 'IndexedDB에 영구저장 중');
+  showLoad('저장 중...','IndexedDB에 영구저장 중');
   await sleep(50);
 
   const msgs = parseCSV(draft.csv);
@@ -499,7 +457,7 @@ async function saveProfile() {
   const dates = msgs.map(m => m.datetime.split(' ')[0]).filter(Boolean);
 
   const profile = {
-    name, msgCount: msgs.length,
+    name, msgCount:msgs.length,
     dateRange: dates.length ? `${dates[0]} ~ ${dates[dates.length-1]}` : '',
     profData: draft.profData || null,
     csvText: draft.csv,
@@ -516,12 +474,8 @@ async function saveProfile() {
 
 // ══════════════════════════════════════
 //  MULTI-FOLDER AUTO MATCH
-//  폴더 5개 선택 → 파일명 패턴으로 4개 프로필에 매칭
+//  5개 폴더 한번에 선택 → CSV 파일명으로 자동 매칭
 // ══════════════════════════════════════
-function openFolderMatch() {
-  document.getElementById('mfolders').click();
-}
-
 function onFolders(inp) {
   const allFiles = Array.from(inp.files);
   if (!allFiles.length) return;
@@ -530,75 +484,72 @@ function onFolders(inp) {
   showLoad('폴더 분석 중...', allFiles.length.toLocaleString() + '개 파일');
 
   setTimeout(() => {
-    // 폴더별로 그룹핑 (webkitRelativePath = "folderName/file.jpg")
-    const folderMap = {}; // folderName → [File]
+    // 폴더별 그룹핑 (webkitRelativePath = "folderName/file.jpg")
+    const folderMap = {};
     allFiles.forEach(f => {
-      const parts = f.webkitRelativePath.split('/');
-      const folder = parts[0];
+      const folder = f.webkitRelativePath.split('/')[0];
       if (!folderMap[folder]) folderMap[folder] = [];
       folderMap[folder].push(f);
     });
 
     const folderNames = Object.keys(folderMap);
 
-    // 각 프로필에 대해 CSV에 등장하는 이미지 파일명과 폴더 파일명을 대조
-    const matchResult = []; // { profileIdx, folderName, matchedCount, mediaMap }
-
+    // 각 프로필 × 각 폴더 → 매칭 점수 계산
+    const matchResult = [];
     profiles.forEach((p, pi) => {
-      if (!p.csvText) return;
-      const msgs = p._cachedMsgs || parseCSV(p.csvText);
-      p._cachedMsgs = msgs;
+      const msgs = p._cachedMsgs || (p.csvText ? parseCSV(p.csvText) : []);
+      if (!p._cachedMsgs) p._cachedMsgs = msgs;
 
-      // 이 프로필에서 참조하는 이미지 파일명 목록
       const refFiles = new Set(
-        msgs.filter(m => m.type === 'IMAGE' || m.type === 'VIDEO').map(m => m.message.trim())
+        msgs.filter(m => m.type==='IMAGE'||m.type==='VIDEO').map(m => m.message.trim())
       );
 
       let bestFolder = null, bestCount = 0, bestMap = {};
 
       folderNames.forEach(fn => {
-        const files = folderMap[fn];
         const mediaMap = {};
         let count = 0;
-        files.forEach(f => {
+        folderMap[fn].forEach(f => {
           mediaMap[f.name] = URL.createObjectURL(f);
           if (refFiles.has(f.name)) count++;
         });
-        if (count > bestCount) { bestCount = count; bestFolder = fn; bestMap = mediaMap; }
+        if (count > bestCount) { bestCount=count; bestFolder=fn; bestMap=mediaMap; }
       });
 
-      matchResult.push({ profileIdx: pi, folderName: bestFolder, matchedCount: bestCount, mediaMap: bestMap });
+      // 매칭 0이면 순서대로 할당
+      if (bestCount === 0 && folderNames[pi]) {
+        bestFolder = folderNames[pi];
+        bestMap = {};
+        folderMap[folderNames[pi]].forEach(f => { bestMap[f.name] = URL.createObjectURL(f); });
+      }
+
+      matchResult.push({ profileIdx:pi, folderName:bestFolder, matchedCount:bestCount, mediaMap:bestMap });
     });
 
     hideLoad();
-    showMatchModal(matchResult, folderMap);
+    showMatchModal(matchResult);
   }, 100);
 }
 
-function showMatchModal(result, folderMap) {
+function showMatchModal(result) {
   pendingMatchResult = result;
   const rows = document.getElementById('match-rows');
   rows.innerHTML = '';
 
   result.forEach(r => {
     const p = profiles[r.profileIdx];
-    const row = document.createElement('div');
-    row.className = 'match-row';
+    const row = document.createElement('div'); row.className='match-row';
+    const dot = document.createElement('div'); dot.className='match-dot '+(r.matchedCount>0?'ok':'no');
+    const nm  = document.createElement('div'); nm.className='match-name'; nm.textContent=p.name;
+    const info= document.createElement('div'); info.className='match-count';
 
-    const dot = document.createElement('div');
-    dot.className = 'match-dot ' + (r.matchedCount > 0 ? 'ok' : 'no');
-
-    const nm = document.createElement('div');
-    nm.className = 'match-name';
-    nm.textContent = p.name;
-
-    const info = document.createElement('div');
-    info.className = 'match-count';
     if (r.folderName && r.matchedCount > 0) {
       info.textContent = `📂 ${r.folderName} (${r.matchedCount}개 매칭)`;
-    } else {
-      info.textContent = '매칭 실패 (수동 선택 필요)';
+    } else if (r.folderName) {
+      info.textContent = `📂 ${r.folderName} (순서 할당)`;
       dot.className = 'match-dot no';
+    } else {
+      info.textContent = '매칭 실패';
     }
 
     row.append(dot, nm, info);
@@ -610,14 +561,14 @@ function showMatchModal(result, folderMap) {
 
 function applyMatch() {
   if (!pendingMatchResult) return;
-  // 각 프로필에 mediaMap 임시 저장
   pendingMatchResult.forEach(r => {
-    if (r.matchedCount > 0) {
+    if (r.mediaMap && Object.keys(r.mediaMap).length > 0) {
       profiles[r.profileIdx]._media = r.mediaMap;
     }
   });
   pendingMatchResult = null;
   document.getElementById('match-modal').classList.remove('open');
+  renderHome();
   alert('사진이 연결됐어요! 각 대화를 열면 사진이 보여요 🎉');
 }
 
@@ -632,22 +583,19 @@ function closeMatch() {
 function openViewer(idx, preMsg, preMedia) {
   activeIdx = idx;
   const p = profiles[idx];
-  showLoad('메시지 불러오는 중...', '');
+  showLoad('메시지 불러오는 중...','');
 
   setTimeout(() => {
-    const msgs = preMsg || (p._cachedMsgs) || (p.csvText ? parseCSV(p.csvText) : []);
+    const msgs = preMsg || p._cachedMsgs || (p.csvText ? parseCSV(p.csvText) : []);
     if (!p._cachedMsgs) p._cachedMsgs = msgs;
 
-    // media: 인자로 받은 것 > 자동매칭된 것 > 빈 것
-    const media = (preMedia && Object.keys(preMedia).length > 0) ? preMedia
-                  : (p._media || {});
+    const media = (preMedia && Object.keys(preMedia).length>0) ? preMedia : (p._media || {});
 
     parsedMsgs  = msgs;
     activeMedia = media;
     msgDates = new Set(msgs.map(m => m.datetime.split(' ')[0]).filter(Boolean));
 
-    const av = document.getElementById('vav');
-    av.innerHTML = p.profData ? `<img src="${p.profData}">` : '💜';
+    document.getElementById('vav').innerHTML = p.profData ? `<img src="${p.profData}">` : '💜';
     document.getElementById('vtitle').textContent = p.name;
     document.getElementById('vsub').textContent = msgs.length.toLocaleString() + '개 메시지';
 
@@ -656,8 +604,6 @@ function openViewer(idx, preMsg, preMedia) {
 
     renderMsgs(msgs, media);
     show('viewer');
-
-    // push history so back button is catchable
     history.pushState(null, '', location.href);
     hideLoad();
   }, 80);
@@ -666,14 +612,14 @@ function openViewer(idx, preMsg, preMedia) {
 function onMediaViewer(inp) {
   const files = Array.from(inp.files);
   if (!files.length) return;
-  showLoad('사진 연결 중...', files.length.toLocaleString() + '개');
+  showLoad('사진 연결 중...', files.length.toLocaleString()+'개');
   setTimeout(() => {
     activeMedia = {};
     files.forEach(f => { activeMedia[f.name] = URL.createObjectURL(f); });
-    // cache on profile
     profiles[activeIdx]._media = activeMedia;
     document.getElementById('media-banner').style.display = 'none';
     renderMsgs(parsedMsgs, activeMedia);
+    renderHome();
     hideLoad();
   }, 80);
   inp.value = '';
@@ -694,15 +640,10 @@ function parseCSV(txt) {
   while (i < lines.length) {
     let line = lines[i];
     if (!line.trim()) { i++; continue; }
-    while ((line.match(/"/g)||[]).length % 2 !== 0 && i+1 < lines.length) { i++; line += '\n' + lines[i]; }
+    while ((line.match(/"/g)||[]).length%2!==0 && i+1<lines.length) { i++; line+='\n'+lines[i]; }
     const cols = splitLine(line);
     if (cols.length >= 4) {
-      rows.push({
-        nickname: cols[0].trim(),
-        type:     cols[1].trim().toUpperCase(),
-        message:  cols[2].trim(),
-        datetime: (cols[4] || cols[3]).trim(),
-      });
+      rows.push({ nickname:cols[0].trim(), type:cols[1].trim().toUpperCase(), message:cols[2].trim(), datetime:(cols[4]||cols[3]).trim() });
     }
     i++;
   }
@@ -711,31 +652,31 @@ function parseCSV(txt) {
 
 function splitLine(s) {
   const r=[]; let c=''; let q=false;
-  for (let i=0; i<s.length; i++) {
-    if (s[i]==='"') { if (q&&s[i+1]==='"') { c+='"'; i++; } else q=!q; }
-    else if (s[i]===',' && !q) { r.push(c); c=''; }
+  for (let i=0;i<s.length;i++) {
+    if (s[i]==='"') { if (q&&s[i+1]==='"'){c+='"';i++;}else q=!q; }
+    else if (s[i]===','&&!q) { r.push(c); c=''; }
     else c+=s[i];
   }
   r.push(c); return r;
 }
 
 function detectSenders(rows) {
-  const first = rows.find(r => r.type === 'TEXT')?.nickname;
+  const first = rows.find(r => r.type==='TEXT')?.nickname;
   return { me: first };
 }
 
 function fmtTime(dt) {
-  const p = dt.split(' '); if (p.length<2) return '';
-  const [h,m] = p[1].split(':'); let hh = parseInt(h);
-  const ap = hh>=12?'오후':'오전';
-  if (hh>12) hh-=12; if (hh===0) hh=12;
+  const p=dt.split(' '); if(p.length<2)return'';
+  const [h,m]=p[1].split(':'); let hh=parseInt(h);
+  const ap=hh>=12?'오후':'오전';
+  if(hh>12)hh-=12; if(hh===0)hh=12;
   return `${ap} ${hh}:${m}`;
 }
 
 function fmtDate(dt) {
-  const d = new Date(dt.replace(' ','T'));
-  if (isNaN(d)) return dt.split(' ')[0];
-  return d.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' });
+  const d=new Date(dt.replace(' ','T'));
+  if(isNaN(d))return dt.split(' ')[0];
+  return d.toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'short'});
 }
 
 // ══════════════════════════════════════
@@ -753,66 +694,56 @@ function renderMsgs(rows, media) {
     if (dk !== lastDate) {
       lastDate = dk;
       const sep = document.createElement('div');
-      sep.className = 'dsep'; sep.dataset.date = dk;
-      sep.textContent = fmtDate(row.datetime);
+      sep.className='dsep'; sep.dataset.date=dk; sep.textContent=fmtDate(row.datetime);
       wrap.appendChild(sep);
     }
 
-    const isMe = row.nickname === me;
+    const isMe = row.nickname===me;
     const prev = rows[idx-1];
-    const sameG = prev && prev.nickname === row.nickname && prev.datetime.split(' ')[0] === dk;
+    const sameG = prev && prev.nickname===row.nickname && prev.datetime.split(' ')[0]===dk;
 
     const mrow = document.createElement('div');
-    // 상대방 = them(왼쪽), 나 = me(오른쪽)
     mrow.className = 'mrow ' + (isMe ? 'me' : 'them');
 
-    // 아바타: 상대방만 왼쪽에
     if (!isMe) {
       if (!sameG) {
-        const av = document.createElement('div');
-        av.className = 'mav';
-        av.innerHTML = p && p.profData ? `<img src="${p.profData}">` : '💜';
+        const av=document.createElement('div'); av.className='mav';
+        av.innerHTML = p&&p.profData ? `<img src="${p.profData}">` : '💜';
         mrow.appendChild(av);
       } else {
-        const ph = document.createElement('div'); ph.className = 'maph'; mrow.appendChild(ph);
+        const ph=document.createElement('div'); ph.className='maph'; mrow.appendChild(ph);
       }
     }
 
-    const cont = document.createElement('div');
-    cont.className = 'mcont';
+    const cont = document.createElement('div'); cont.className='mcont';
 
-    if (!isMe && !sameG) {
-      const n = document.createElement('div');
-      n.className = 'mname'; n.textContent = row.nickname; cont.appendChild(n);
+    if (!isMe&&!sameG) {
+      const n=document.createElement('div'); n.className='mname'; n.textContent=row.nickname; cont.appendChild(n);
     }
 
-    // 콘텐츠
-    if (row.type === 'IMAGE') {
-      const fn = row.message.trim();
-      if (media && media[fn]) {
-        const img = document.createElement('img');
-        img.src = media[fn]; img.className = 'bimg'; img.loading = 'lazy';
-        img.onclick = () => { document.getElementById('lbimg').src=media[fn]; document.getElementById('lb').classList.add('open'); };
+    if (row.type==='IMAGE') {
+      const fn=row.message.trim();
+      if (media&&media[fn]) {
+        const img=document.createElement('img');
+        img.src=media[fn]; img.className='bimg'; img.loading='lazy';
+        img.onclick=()=>{ document.getElementById('lbimg').src=media[fn]; document.getElementById('lb').classList.add('open'); };
         cont.appendChild(img);
       } else {
-        const ph = document.createElement('div'); ph.className='iph'; ph.textContent='🖼 '+fn; cont.appendChild(ph);
+        const ph=document.createElement('div'); ph.className='iph'; ph.textContent='🖼 '+fn; cont.appendChild(ph);
       }
-    } else if (row.type === 'VIDEO') {
-      const fn = row.message.trim();
-      if (media && media[fn]) {
-        const v = document.createElement('video');
-        v.src=media[fn]; v.controls=true; v.style.cssText='max-width:190px;border-radius:12px;';
+    } else if (row.type==='VIDEO') {
+      const fn=row.message.trim();
+      if (media&&media[fn]) {
+        const v=document.createElement('video'); v.src=media[fn]; v.controls=true; v.style.cssText='max-width:190px;border-radius:12px;';
         cont.appendChild(v);
       } else {
-        const ph = document.createElement('div'); ph.className='iph'; ph.textContent='🎬 '+fn; cont.appendChild(ph);
+        const ph=document.createElement('div'); ph.className='iph'; ph.textContent='🎬 '+fn; cont.appendChild(ph);
       }
     } else {
-      const b = document.createElement('div');
-      b.className = 'bubble'; b.textContent = row.message; cont.appendChild(b);
+      const b=document.createElement('div'); b.className='bubble'; b.textContent=row.message; cont.appendChild(b);
     }
 
-    const t = document.createElement('div');
-    t.className = 'mtime'; t.textContent = fmtTime(row.datetime); cont.appendChild(t);
+    const t=document.createElement('div'); t.className='mtime'; t.textContent=fmtTime(row.datetime); cont.appendChild(t);
     mrow.appendChild(cont);
     wrap.appendChild(mrow);
   });
@@ -822,37 +753,26 @@ function renderMsgs(rows, media) {
 //  CALENDAR
 // ══════════════════════════════════════
 function openCal() {
-  if (msgDates.size > 0) {
-    const first = [...msgDates].sort()[0];
-    calY = parseInt(first.split('-')[0]);
-    calM = parseInt(first.split('-')[1]) - 1;
+  if (msgDates.size>0) {
+    const first=[...msgDates].sort()[0];
+    calY=parseInt(first.split('-')[0]); calM=parseInt(first.split('-')[1])-1;
   }
-  renderCal();
-  document.getElementById('cal-bg').classList.add('open');
+  renderCal(); document.getElementById('cal-bg').classList.add('open');
 }
 function closeCal() { document.getElementById('cal-bg').classList.remove('open'); }
-function calPrev() { calM--; if (calM<0){calM=11;calY--;} renderCal(); }
-function calNext() { calM++; if (calM>11){calM=0;calY++;} renderCal(); }
+function calPrev() { calM--; if(calM<0){calM=11;calY--;} renderCal(); }
+function calNext() { calM++; if(calM>11){calM=0;calY++;} renderCal(); }
 
 function renderCal() {
-  document.getElementById('cal-ym').textContent = `${calY}년 ${calM+1}월`;
-  const grid = document.getElementById('cgrid');
-  grid.innerHTML = '';
-  const fd = new Date(calY, calM, 1).getDay();
-  const dim = new Date(calY, calM+1, 0).getDate();
-  for (let i=0; i<fd; i++) { const b=document.createElement('div'); b.className='cday'; grid.appendChild(b); }
-  for (let d=1; d<=dim; d++) {
-    const ds = `${calY}-${String(calM+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const has = msgDates.has(ds);
-    const cell = document.createElement('div');
-    cell.className = 'cday' + (has?' has':'');
-    cell.textContent = d;
-    if (has) {
-      cell.onclick = () => {
-        const tgt = document.querySelector(`.dsep[data-date="${ds}"]`);
-        if (tgt) { closeCal(); setTimeout(()=>tgt.scrollIntoView({behavior:'smooth',block:'start'}),120); }
-      };
-    }
+  document.getElementById('cal-ym').textContent=`${calY}년 ${calM+1}월`;
+  const grid=document.getElementById('cgrid'); grid.innerHTML='';
+  const fd=new Date(calY,calM,1).getDay(), dim=new Date(calY,calM+1,0).getDate();
+  for(let i=0;i<fd;i++){const b=document.createElement('div');b.className='cday';grid.appendChild(b);}
+  for(let d=1;d<=dim;d++){
+    const ds=`${calY}-${String(calM+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const has=msgDates.has(ds);
+    const cell=document.createElement('div'); cell.className='cday'+(has?' has':''); cell.textContent=d;
+    if(has){ cell.onclick=()=>{ const tgt=document.querySelector(`.dsep[data-date="${ds}"]`); if(tgt){closeCal();setTimeout(()=>tgt.scrollIntoView({behavior:'smooth',block:'start'}),120);}};  }
     grid.appendChild(cell);
   }
 }
@@ -860,26 +780,21 @@ function renderCal() {
 // ══════════════════════════════════════
 //  UTIL
 // ══════════════════════════════════════
-function showLoad(msg, sub) {
-  document.getElementById('ltxt').textContent = msg;
-  document.getElementById('lsub').textContent = sub || '';
-  document.getElementById('loading').classList.add('show');
-}
-function hideLoad() { document.getElementById('loading').classList.remove('show'); }
-function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+function showLoad(msg,sub){document.getElementById('ltxt').textContent=msg;document.getElementById('lsub').textContent=sub||'';document.getElementById('loading').classList.add('show');}
+function hideLoad(){document.getElementById('loading').classList.remove('show');}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
 
 // ══════════════════════════════════════
 //  INIT
 // ══════════════════════════════════════
 async function init() {
-  // PWA manifest
-  const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 680"><defs><clipPath id="rc"><rect x="40" y="40" width="600" height="600" rx="140"/></clipPath><radialGradient id="bg" cx="38%" cy="32%" r="75%"><stop offset="0%" stop-color="#2d1b4e"/><stop offset="100%" stop-color="#0d0818"/></radialGradient><radialGradient id="mp" cx="36%" cy="30%" r="70%"><stop offset="0%" stop-color="#f5d0fe"/><stop offset="100%" stop-color="#7e22ce"/></radialGradient></defs><g clip-path="url(#rc)"><rect x="40" y="40" width="600" height="600" fill="url(#bg)"/><circle cx="340" cy="336" r="148" fill="url(#mp)"/><circle cx="143" cy="328" r="10" fill="#f9a8d4" opacity=".88"/><text x="340" y="528" text-anchor="middle" font-family="sans-serif" font-size="38" font-weight="800" fill="#fdf4ff">My Universe</text></g></svg>`;
+  const iconSvg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 680"><defs><clipPath id="rc"><rect x="40" y="40" width="600" height="600" rx="140"/></clipPath><radialGradient id="bg" cx="38%" cy="32%" r="75%"><stop offset="0%" stop-color="#2d1b4e"/><stop offset="100%" stop-color="#0d0818"/></radialGradient><radialGradient id="mp" cx="36%" cy="30%" r="70%"><stop offset="0%" stop-color="#f5d0fe"/><stop offset="100%" stop-color="#7e22ce"/></radialGradient></defs><g clip-path="url(#rc)"><rect x="40" y="40" width="600" height="600" fill="url(#bg)"/><circle cx="340" cy="336" r="148" fill="url(#mp)"/><text x="340" y="528" text-anchor="middle" font-family="sans-serif" font-size="38" font-weight="800" fill="#fdf4ff">My Universe</text></g></svg>`;
   const mf={name:"My Universe",short_name:"My Universe",start_url:"./",display:"standalone",background_color:"#0e0e14",theme_color:"#0e0e14",icons:[{src:"data:image/svg+xml,"+encodeURIComponent(iconSvg),sizes:"512x512",type:"image/svg+xml",purpose:"any maskable"}]};
   const ml=document.createElement("link");ml.rel="manifest";ml.href=URL.createObjectURL(new Blob([JSON.stringify(mf)],{type:"application/json"}));document.head.appendChild(ml);
   showLoad('시작하는 중...','');
-  history.pushState(null, '', location.href); // init history entry
+  history.pushState(null,'',location.href);
   await openDB();
-  profiles = await dbGetAll();
+  profiles=await dbGetAll();
   show('home');
   renderHome();
   hideLoad();
